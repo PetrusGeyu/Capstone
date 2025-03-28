@@ -4,10 +4,31 @@ const User = require("../models/userModel");
 
 exports.register = async (req, res) => {
   const { name, email, password } = req.body;
-  User.create({ name, email, password }, (err, result) => {
-    if (err) return res.status(500).json({ error: err.message });
-    res.status(201).json({ message: "User registered!" });
-  });
+
+  try {
+    // Cek apakah user sudah ada
+    const existingUser = await User.findByEmail(email);
+    if (existingUser.length > 0) {
+      return res.status(400).json({ message: "Email already registered" });
+    }
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Simpan user
+    User.create({ name, email, password: hashedPassword }, (err, result) => {
+      if (err) return res.status(500).json({ error: err.message });
+
+      // Generate token
+      const token = jwt.sign({ id: result.insertId }, process.env.JWT_SECRET, {
+        expiresIn: "1h",
+      });
+
+      res.status(201).json({ message: "User registered!", token });
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };
 
 exports.login = (req, res) => {
@@ -40,3 +61,6 @@ exports.login = (req, res) => {
     });
   });
 };
+
+
+//complete

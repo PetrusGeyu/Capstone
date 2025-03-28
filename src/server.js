@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/auth", authRoutes);
+app.use("api/auth", authRoutes);
 app.use("/api/wisata", wisataRoutes);
 app.use("/api/budaya", budayaRoutes);
 app.use("/api/review", reviewRoutes);

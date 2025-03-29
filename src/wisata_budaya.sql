@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Mar 2025 pada 15.21
+-- Waktu pembuatan: 28 Mar 2025 pada 15.44
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -77,7 +77,6 @@ CREATE TABLE `users` (
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` enum('user','admin') DEFAULT 'user',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -86,10 +85,10 @@ CREATE TABLE `users` (
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `created_at`, `updated_at`) VALUES
-(1, 'John Doe', 'john@example.com', '$2b$10$fEO1GhtrX8zvxTf99ZXfVOjV2TYuyp5XMD/Ha0rAfn2gNGHOp7kHK', 'user', '2025-03-17 12:43:19', '2025-03-17 12:43:19'),
-(2, 'Petrus', 'petrus@example.com', '$2b$10$j/Y2hVmzXIApPDw/ujxMyeenECYYxAeD0NSbVjkqSxFP2YIfpMKqm', 'user', '2025-03-17 12:45:18', '2025-03-17 12:45:18'),
-(4, 'Petrus', 'petrus1@example.com', '$2b$10$I85ZX6aztJ09Poyzisz0rupkFOy7LvAf/UbLdxdqNffywgGhMw9Iu', 'user', '2025-03-17 12:46:17', '2025-03-17 12:46:17');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`, `updated_at`) VALUES
+(5, 'petrus', 'petrus@gmail.com', '123', '2025-03-28 14:13:04', '2025-03-28 14:13:04'),
+(6, 'Petrus', 'petrus1@example.com', '$2b$10$lXffB.cdmm.Qbpv2Q1ikIO4rk40tCZU/FYMbT/Utktzf9qbYVOtQO', '2025-03-28 14:19:34', '2025-03-28 14:19:34'),
+(7, 'Januari', 'user@gmail.com', '$2b$10$Z21fEH3cPqJgUiELIlr38O8pxYa.OMbwbIX8JSxF5/cjR/uzbAjiS', '2025-03-28 14:36:32', '2025-03-28 14:36:32');
 
 -- --------------------------------------------------------
 
@@ -164,7 +163,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `wisata`

@@ -6,7 +6,7 @@ const authRoutes = require("./routes/authRoutes");
 const wisataRoutes = require("./routes/wisataRoutes");
 const budayaRoutes = require("./routes/budayaRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
-
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -19,6 +19,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/wisata", wisataRoutes);
 app.use("/api/budaya", budayaRoutes);
 app.use("/api/review", reviewRoutes);
+app.use("/api/user", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
